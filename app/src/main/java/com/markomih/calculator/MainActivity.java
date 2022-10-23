@@ -1,6 +1,7 @@
 package com.markomih.calculator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 
 
 import org.mariuszgromada.math.mxparser.*;
@@ -9,6 +10,9 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.method.ScrollingMovementMethod;
+import android.util.Log;
+import android.view.GestureDetector;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -61,6 +65,10 @@ public class MainActivity extends AppCompatActivity {
         btnSquareRoot = findViewById(R.id.btn_square_root);
         dotPlaced = false;
         equalsPressedStatus = false;
+
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
+
+
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -293,6 +301,15 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        btnDelete.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                vibrator.vibrate(60);
+                displayText.setText("");
+                dotPlaced = false;
+                return false;
+            }
+        });
 
         btnOpenParenthesis.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -474,6 +491,7 @@ public class MainActivity extends AppCompatActivity {
             return false; }
     }
 
+
     // rounding decimal numbers to specific number of decimal places(passed down as a places argument)
     public static double round(double value, int places) {
         try {
@@ -485,4 +503,8 @@ public class MainActivity extends AppCompatActivity {
         } catch (NumberFormatException e) {
             return value; }
     }
+
+
+
+
 }

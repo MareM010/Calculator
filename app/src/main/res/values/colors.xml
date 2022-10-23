@@ -16,4 +16,8 @@
     <color name="light_blue">#498cbc</color>
     <color name="green_button">#FF8AB58B</color>
     <color name="blue">#375C9C</color>
+
+    <color name="background_color">#FCFCFC</color>
+    <color name="text_color">#000000</color>
+    <color name="status_bar_dark">#4f854a</color>
 </resources>
