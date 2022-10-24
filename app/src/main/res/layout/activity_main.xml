@@ -6,9 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity"
     android:orientation="vertical"
-    android:background="@color/background_color"
     >
-
 
 <LinearLayout
     android:id="@+id/text_view_linear_layout"
@@ -29,19 +27,21 @@
             android:id="@+id/txt_window"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:layout_marginRight="2dp"
+            android:layout_marginLeft="2dp"
             android:background="@drawable/text_view_background_style"
             android:gravity="bottom|right"
-            android:padding="10px"
-            android:maxLines="3"
+            android:padding="5dp"
+            android:maxLines="4"
             android:scrollbars="vertical"
-            android:textColor="#000000"
+            android:textColor="@color/text_color"
             android:textSize="60dp"
             app:layout_constraintBottom_toBottomOf="@id/button_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-
             app:layout_constraintVertical_bias="1.0"
-            tools:ignore="MissingConstraints" />
+            tools:ignore="MissingConstraints"
+            android:freezesText="true"/>
 
     </ScrollView>
 </LinearLayout>
@@ -68,10 +68,9 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="#"
-                    android:textSize="30dp"
-                    android:textColor="@color/button_color"
-                    android:backgroundTint="@color/green_button"
-
+                    android:textSize="40dp"
+                    android:textColor="@color/special_operators_button_text_color"
+                    android:backgroundTint="@color/special_operators_button_background_color"
                     />
                 <Button
                     android:id="@+id/btn_factorial"
@@ -79,36 +78,36 @@
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="!"
-                    android:textSize="30dp"
-                    android:textColor="@color/button_color"
-                    android:backgroundTint="@color/green_button"/>
+                    android:textSize="40dp"
+                    android:textColor="@color/special_operators_button_text_color"
+                    android:backgroundTint="@color/special_operators_button_background_color"/>
                 <Button
                     android:id="@+id/btn_percentage"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="%"
-                    android:textSize="30dp"
-                    android:textColor="@color/button_color"
-                    android:backgroundTint="@color/green_button"/>
+                    android:textSize="40dp"
+                    android:textColor="@color/special_operators_button_text_color"
+                    android:backgroundTint="@color/special_operators_button_background_color"/>
                 <Button
                     android:id="@+id/btn_square_root"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="√"
-                    android:textSize="30dp"
-                    android:textColor="@color/button_color"
-                    android:backgroundTint="@color/green_button"/>
+                    android:textSize="40dp"
+                    android:textColor="@color/special_operators_button_text_color"
+                    android:backgroundTint="@color/special_operators_button_background_color"/>
                 <Button
                     android:id="@+id/btn_exponent"
                     android:layout_width="0dp"
                     android:layout_height="match_parent"
                     android:layout_weight="3"
                     android:text="^"
-                    android:textSize="30dp"
-                    android:textColor="@color/button_color"
-                    android:backgroundTint="@color/green_button"/>
+                    android:textSize="40dp"
+                    android:textColor="@color/special_operators_button_text_color"
+                    android:backgroundTint="@color/special_operators_button_background_color"/>
 
                 <ImageButton
                     android:id="@+id/btn_delete"
@@ -116,9 +115,8 @@
                     android:layout_height="match_parent"
                     android:layout_weight="5"
                     android:src="@drawable/delete"
-                    android:backgroundTint="@color/button_red"
+                    android:backgroundTint="@color/backspace_background_color"
                     />
-
 
             </LinearLayout>
 
@@ -134,9 +132,8 @@
                 android:layout_weight="1"
                 android:text="7"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"
-
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"
                 />
         <Button
             android:id="@+id/btn_8"
@@ -145,8 +142,8 @@
             android:layout_weight="1"
             android:text="8"
             android:textSize="50dp"
-            android:textColor="@color/button_color"
-            android:backgroundTint="@color/standard_button"/>
+            android:textColor="@color/button_text_color"
+            android:backgroundTint="@color/button_background_color"/>
         <Button
             android:id="@+id/btn_9"
             android:layout_width="0dp"
@@ -154,13 +151,14 @@
             android:layout_weight="1"
             android:text="9"
             android:textSize="50dp"
-            android:textColor="@color/button_color"
-            android:backgroundTint="@color/standard_button"/>
+            android:textColor="@color/button_text_color"
+            android:backgroundTint="@color/button_background_color"/>
         <Button
             android:id="@+id/btn_divide"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
+            android:textColor="@color/operators_button_text_color"
             android:text="/"
             android:textSize="50dp"/>
 
@@ -178,8 +176,8 @@
                 android:layout_weight="1"
                 android:text="4"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_5"
                 android:layout_width="0dp"
@@ -187,8 +185,8 @@
                 android:layout_weight="1"
                 android:text="5"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_6"
                 android:layout_width="0dp"
@@ -196,13 +194,14 @@
                 android:layout_weight="1"
                 android:text="6"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_multiplicate"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/operators_button_text_color"
                 android:text="x"
                 android:textSize="50dp"/>
         </LinearLayout>
@@ -219,8 +218,8 @@
                 android:layout_weight="1"
                 android:text="1"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_2"
                 android:layout_width="0dp"
@@ -228,8 +227,8 @@
                 android:layout_weight="1"
                 android:text="2"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_3"
                 android:layout_width="0dp"
@@ -237,13 +236,14 @@
                 android:layout_weight="1"
                 android:text="3"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
             <Button
                 android:id="@+id/btn_substract"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/operators_button_text_color"
                 android:text="-"
                 android:textSize="50dp"
                 android:textAlignment="center"/>
@@ -260,6 +260,7 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
+                android:textColor="@color/operators_button_text_color"
                 android:text="."
                 android:textSize="50dp"/>
 
@@ -270,14 +271,15 @@
                 android:layout_weight="1"
                 android:text="0"
                 android:textSize="50dp"
-                android:textColor="@color/button_color"
-                android:backgroundTint="@color/standard_button"/>
+                android:textColor="@color/button_text_color"
+                android:backgroundTint="@color/button_background_color"/>
 
             <Button
                 android:id="@+id/btn_addition"
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="2"
+                android:textColor="@color/operators_button_text_color"
                 android:text="+"
                 android:textSize="50dp"
                 android:textAlignment="center"/>
@@ -304,7 +306,7 @@
                     android:text="("
                     android:textSize="50dp"
                     android:textColor="@color/green_button"
-                    android:backgroundTint="@color/standard_button"/>
+                    android:backgroundTint="@color/button_background_color"/>
 
                 <Button
                     android:id="@+id/btn_closed_parenthesis"
@@ -314,7 +316,7 @@
                     android:text=")"
                     android:textSize="50dp"
                     android:textColor="@color/green_button"
-                    android:backgroundTint="@color/standard_button"/>
+                    android:backgroundTint="@color/button_background_color"/>
 
              <Button
                  android:id="@+id/btn_equals"

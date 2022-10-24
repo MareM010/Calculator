@@ -9,15 +9,19 @@
     <color name="white">#FFFFFFFF</color>
     <color name="grey_button_light">#dbdddc</color>
     <color name="grey_button_dark">#37443d</color>
-    <color name="standard_button">#edeeef</color>
-    <color name="button_color">#515151</color>
+    <color name="button_background_color">#000000</color>
+    <color name="button_text_color">#FFFFFF</color>
+    <color name="operators_button_text_color">#FF8AB58B</color>
+    <color name="special_operators_button_text_color">#000000</color>
+    <color name="special_operators_button_background_color">#4f854a</color>
     <color name="button_red">#ce513d</color>
     <color name="button_red_darker">#c30404</color>
     <color name="light_blue">#498cbc</color>
     <color name="green_button">#FF8AB58B</color>
     <color name="blue">#375C9C</color>
-
-
+    <color name="backspace_background_color">#834343</color>
+    <color name="text_field_stroke_color">#ffffff</color>
+    <color name="text_field_background_color">#000000</color>
     <color name="background_color">#212121</color>
     <color name="text_color">#FFFFFF</color>
     <color name="status_bar_dark">#4f854a</color>

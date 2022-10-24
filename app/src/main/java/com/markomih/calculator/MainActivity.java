@@ -10,9 +10,6 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Vibrator;
 import android.text.method.ScrollingMovementMethod;
-import android.util.Log;
-import android.view.GestureDetector;
-import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -21,6 +18,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.nio.charset.StandardCharsets;
+import java.util.Collections;
 
 public class MainActivity extends AppCompatActivity {
     Button btn1, btn2, btn3, btn4, btn5, btn6, btn7, btn8, btn9, btn0, btnDot, btnEquals, btnDivide, btnMultiple, btnSubstract, btnAddition, btnClear, btnOpenParenthesis, btnClosedParenthesis, btnExponent, btnPercentage, btnFactoriel, btnModuo, btnSquareRoot;
@@ -28,6 +27,7 @@ public class MainActivity extends AppCompatActivity {
     TextView displayText;
     ScrollView mScrollView;
     boolean dotPlaced, equalsPressedStatus;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,12 +67,12 @@ public class MainActivity extends AppCompatActivity {
         equalsPressedStatus = false;
 
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_FOLLOW_SYSTEM);
-
-
+        mXparser.enableAlmostIntRounding();
 
         btn0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -83,6 +83,7 @@ public class MainActivity extends AppCompatActivity {
         btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -93,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
         btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -103,6 +105,7 @@ public class MainActivity extends AppCompatActivity {
         btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -112,6 +115,7 @@ public class MainActivity extends AppCompatActivity {
         btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -121,6 +125,7 @@ public class MainActivity extends AppCompatActivity {
         btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -130,6 +135,7 @@ public class MainActivity extends AppCompatActivity {
         btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -139,6 +145,7 @@ public class MainActivity extends AppCompatActivity {
         btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -150,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
+                    infinityDetection();
                     displayText.setText(""); }
                 displayText.setText(displayText.getText() + "8");
             }
@@ -157,6 +165,7 @@ public class MainActivity extends AppCompatActivity {
         btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -166,6 +175,7 @@ public class MainActivity extends AppCompatActivity {
         btnDot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText(""); }
@@ -181,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
         btnEquals.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(60);
                 equalsCalculation(); }
         });
@@ -188,6 +199,7 @@ public class MainActivity extends AppCompatActivity {
         btnDivide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -211,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         btnMultiple.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -232,6 +245,7 @@ public class MainActivity extends AppCompatActivity {
         btnSubstract.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -253,6 +267,7 @@ public class MainActivity extends AppCompatActivity {
         btnAddition.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -289,7 +304,7 @@ public class MainActivity extends AppCompatActivity {
                         String temp = displayText.getText().toString().substring(0, length - 1);
                         displayText.setText(temp);
                         dotPlaced = false;
-                    } else if (length > 0 && displayText.getText().charAt(length - 1) == '-' || displayText.getText().charAt(length - 1) == '+' || displayText.getText().charAt(length - 1) == '/' || displayText.getText().charAt(length - 1) == '*' || displayText.getText().charAt(length - 1) == '0' || displayText.getText().charAt(length - 1) == '1' || displayText.getText().charAt(length - 1) == '2' || displayText.getText().charAt(length - 1) == '3' || displayText.getText().charAt(length - 1) == '4' || displayText.getText().charAt(length - 1) == '5' || displayText.getText().charAt(length - 1) == '6' || displayText.getText().charAt(length - 1) == '7' || displayText.getText().charAt(length - 1) == '8' || displayText.getText().charAt(length - 1) == '9' || displayText.getText().charAt(length - 1) == '^' || displayText.getText().charAt(length - 1) == '%' || displayText.getText().charAt(length - 1) == '!' || displayText.getText().charAt(length - 1) == '#' || displayText.getText().charAt(length - 1) == '√' || displayText.getText().charAt(length - 1) == 'E') {
+                    } else if (length > 0 && displayText.getText().charAt(length - 1) == '-' || displayText.getText().charAt(length - 1) == '+' || displayText.getText().charAt(length - 1) == '/' || displayText.getText().charAt(length - 1) == '*' || displayText.getText().charAt(length - 1) == '0' || displayText.getText().charAt(length - 1) == '1' || displayText.getText().charAt(length - 1) == '2' || displayText.getText().charAt(length - 1) == '3' || displayText.getText().charAt(length - 1) == '4' || displayText.getText().charAt(length - 1) == '5' || displayText.getText().charAt(length - 1) == '6' || displayText.getText().charAt(length - 1) == '7' || displayText.getText().charAt(length - 1) == '8' || displayText.getText().charAt(length - 1) == '9' || displayText.getText().charAt(length - 1) == '^' || displayText.getText().charAt(length - 1) == '%' || displayText.getText().charAt(length - 1) == '!' || displayText.getText().charAt(length - 1) == '#' || displayText.getText().charAt(length - 1) == '√' || displayText.getText().charAt(length - 1) == 'E' || displayText.getText().charAt(length - 1) == '(' || displayText.getText().charAt(length - 1) == ')') {
                         String temp = displayText.getText().toString().substring(0, length - 1);
                         displayText.setText(temp);
                     } else {
@@ -314,6 +329,7 @@ public class MainActivity extends AppCompatActivity {
         btnOpenParenthesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -325,6 +341,7 @@ public class MainActivity extends AppCompatActivity {
         btnClosedParenthesis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -336,6 +353,7 @@ public class MainActivity extends AppCompatActivity {
         btnExponent.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -357,6 +375,7 @@ public class MainActivity extends AppCompatActivity {
         btnPercentage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -379,6 +398,7 @@ public class MainActivity extends AppCompatActivity {
         btnFactoriel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -401,6 +421,7 @@ public class MainActivity extends AppCompatActivity {
         btnModuo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -423,6 +444,7 @@ public class MainActivity extends AppCompatActivity {
         btnSquareRoot.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                infinityDetection();
                 vibrator.vibrate(30);
                 if (isInputInvalid()) {
                     displayText.setText("");
@@ -451,36 +473,41 @@ public class MainActivity extends AppCompatActivity {
     void equalsCalculation() {
         equalsPressedStatus = true;
         String displayString = displayText.getText().toString();
-        if (displayText.getText().toString().isEmpty()) {
+        if (displayString.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please enter numbers", Toast.LENGTH_SHORT).show();
             displayText.setText("");
-        } else {
-            try {
-                Double expressionCalculation = new Expression(displayString).calculate();
-                if (expressionCalculation.isNaN()) {
-                    displayText.setText(displayString);
-                    Toast.makeText(getApplicationContext(), "Invalid input values", Toast.LENGTH_SHORT).show();
-                } else {
-                    displayText.setText(String.valueOf(round(expressionCalculation, 2)));
-                }
-            } catch (ArithmeticException e) {
-                Toast.makeText(getApplicationContext(), "Values too large", Toast.LENGTH_SHORT).show();
-            }
+        }
+        if(displayString.contains("+") || displayString.contains("-") || displayString.contains("*") || displayString.contains("/") || displayString.contains("#") || displayString.contains("!") || displayString.contains("%") || displayString.contains("√") || displayString.contains("^") == true) {
 
-            // if a decimal result has zero and dot preceding it at the end, deletes last two characters
-            // ako na kraju rezultata postoje tacka i nula, brise ih
-            if (displayText.getText().charAt(displayText.length() - 1) == '0') {
-                String temp = displayText.getText().toString().substring(0, displayText.length() - 1);
-                displayText.setText(temp);
-                if (displayText.getText().charAt(displayText.length() - 1) == '.') {
-                    String temp1 = displayText.getText().toString().substring(0, displayText.length() - 1);
-                    displayText.setText(temp1);
-                }
-            }
+            {
+                try {
+                    Double expressionCalculation = new Expression(displayString).calculate();
+                    if (expressionCalculation.isNaN()) {
+                        displayText.setText(displayString);
+                        Toast.makeText(getApplicationContext(), "Invalid input values", Toast.LENGTH_SHORT).show();
 
-            // checks if output number has decimal point already, if it has, user is forbidden to enter it until operator is placed and second number comes,
-            if (displayText.getText().toString().contains("."))
-                dotPlaced = true;
+                    } else {
+                        displayText.setText(String.valueOf(round(expressionCalculation, 2)));
+                    }
+                } catch (ArithmeticException e) {
+                    Toast.makeText(getApplicationContext(), "Values too large", Toast.LENGTH_SHORT).show();
+                }
+
+                // if a decimal result has zero and dot preceding it at the end, deletes last two characters
+                // ako na kraju rezultata postoje tacka i nula, brise ih
+                if (displayText.getText().charAt(displayText.length() - 1) == '0') {
+                    String temp = displayText.getText().toString().substring(0, displayText.length() - 1);
+                    displayText.setText(temp);
+                    if (displayText.getText().charAt(displayText.length() - 1) == '.') {
+                        String temp1 = displayText.getText().toString().substring(0, displayText.length() - 1);
+                        displayText.setText(temp1);
+                    }
+                }
+
+                // checks if output number has decimal point already, if it has, user is forbidden to enter it until operator is placed and second number comes,
+                if (displayText.getText().toString().contains("."))
+                    dotPlaced = true;
+            }
         }
     }
 
@@ -504,6 +531,12 @@ public class MainActivity extends AppCompatActivity {
             return value; }
     }
 
+    public void infinityDetection(){
+       boolean detected = displayText.getText().toString().contains("Infinity");
+        if(detected == true){
+            displayText.setText("");
+        }
+    }
 
 
 
